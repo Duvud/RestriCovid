@@ -2,6 +2,10 @@ body{
     background-color: rgb(215, 247, 231) !important;
 }
 
+input{
+    background-color: white;
+}
+
 .dImagen{
     margin: 0 auto;
     width: 25vw;
@@ -17,7 +21,13 @@ body{
     text-align: center;
 }
 
-.dPostal input{
-    
+.dPostal input{   
+    padding: 0.5vw;
+}
+
+.dPostal button{
     padding: 1vw;
+    border: none;
+    background-color: white;
+    border-radius: 0.05vw;
 }
