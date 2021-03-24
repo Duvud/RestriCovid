@@ -1,6 +1,7 @@
 import logo from './res/img/RestriCovid.png';
 import styles from './RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Input, Button } from 'antd';
 
 
 //Componente que prepara el logo centrado en la parte superior de la página
@@ -18,16 +19,16 @@ function FormularioPostal(props){
   return (
   <>
   <div className={`${styles.dPostal}`}>
-    <div>
+    <div className={`mb-4`}>
       <label>Introduce tu código postal</label>
     </div>
 
-    <div className={`mt-5`}>
-      <input type="text"/>
+    <div className={`mt-6 m-auto col-xl-5 col-lg-6 col-md-7 col-sm-8 col-11`}>
+      <Input type="text"/>
     </div>
 
     <div className={`mt-5`}>
-      <button>Mostrar Restricciones</button>
+      <Button onClick={}>Mostrar Restricciones</Button>
     </div>
   </div>
   </>
