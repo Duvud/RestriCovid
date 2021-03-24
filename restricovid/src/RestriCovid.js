@@ -28,7 +28,7 @@ function FormularioPostal(props){
     </div>
 
     <div className={`mt-5`}>
-      <Button onClick={}>Mostrar Restricciones</Button>
+      <Button onClick={"eskere"}>Mostrar Restricciones</Button>
     </div>
   </div>
   </>
