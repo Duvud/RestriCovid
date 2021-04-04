@@ -79,7 +79,7 @@ function RestriCovid() {
   function Restricciones(props) {
     return (
       <>
-        <div className={"mt-5 m-auto col-6"}>
+        <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
           <Divider orientation="center">Restricciones</Divider>
           <List
             bordered
@@ -129,7 +129,7 @@ function RestriCovid() {
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
-          <div>
+          <div >
             <Restricciones datos={objRestricciones}></Restricciones>
           </div>
         </>
