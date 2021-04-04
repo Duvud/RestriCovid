@@ -4,22 +4,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Input, Button, List, Divider, Alert } from 'antd';
 import React, { useState, useEffect } from "react";
 
-//Función principal donde almacenaremos toda la lógica y los componentes
+//Función principal donde almacenaremos todas las funciones y los componentes
 function RestriCovid() {
   //Hooks useState
   const [codigoPostal, guardarCodigoPostal] = useState("");
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
   const [objRestricciones, guardarObjRestricciones] = useState({});
-  const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(
-    false
-  );
+  const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
 
   /**
    * Esta función valida el código postal asegurandose de que hay
    * 5 numeros del 0-9 y que no haya ningún otro caracter
    * 
    * @param {str} codigoPostal 
-   * @returns false | true
+   * @returns false || true
    */
   const ValidarCodigoPostal = codigoPostal => {
     return /[0-9]{5}/.test(codigoPostal) && /[^0-9]/.test(codigoPostal) === false ?  true : false
@@ -66,7 +64,7 @@ function RestriCovid() {
   //Componente que prepara el logo centrado en la parte superior de la página
   function Logo(props) {
     return (
-      <div className={styles.dImagen}>
+      <div className={`${styles.dImagen} col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8`}>
         <img src={logo} alt="Logo RestriCovid" />
       </div>
     );
@@ -101,13 +99,13 @@ function RestriCovid() {
     <>
       <Logo></Logo>
       <div className={`${styles.dPostal}`}>
-        <div>
+        <div className={'mb-1'}>
           <label>Introduce tu código postal</label>
         </div>
-        <div className={`mt-6 m-auto col-xl-5 col-lg-6 col-md-7 col-sm-8 col-11`}>
+        <div className={`mt-6 m-auto col-xl-4 col-lg-6 col-md-7 col-sm-9 col-12`}>
           <Input
             id="id"
-            key={"xd"}
+            key={"inputPostal"}
             type="text"
             defaultValue={codigoPostal}
             onChange={(e) => {
@@ -116,9 +114,9 @@ function RestriCovid() {
           />
         </div>
 
-        <div className={"mt-5"}>
+        <div className={"mt-3"}>
           <Button
-            className={"mb-5"}
+            className={"mb-5 "}
             id="btnMostrarRestricciones"
             onClick={() => MostrarRestricciones(codigoPostal)}
           >
@@ -128,17 +126,17 @@ function RestriCovid() {
       </div>
       {boolMostrarRestricciones === true && boolCodigoValidado === true ? (
         <>
-          <div className={`m-auto col-6`}>
+          <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
           <div>
             <Restricciones datos={objRestricciones}></Restricciones>
           </div>
         </>
-      ) : boolCodigoValidado === false && codigoPostal !== "" ? (
+      ) : boolCodigoValidado === false ? (
         <>
-          <div className={`m-auto col-6`}>
-            <Alert type="error" message="El codigo postal introducido no es correcto" />
+          <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+            <Alert type="error" message="Por favor, introduce el formato de codigo postal correcto ('12345' por ejemplo)" />
           </div>
         </>
       ) : null}
