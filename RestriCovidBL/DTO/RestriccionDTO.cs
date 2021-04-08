@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RestriCovidBL.DTO
 {
-    class RestriccionDTO
+    public class RestriccionDTO
     {
         public int Id { get; set; }
 

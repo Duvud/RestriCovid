@@ -19,7 +19,7 @@ namespace RestriCovidData
         public string DESCRIPCION{ get; set; }
 
         [MaxLength(50)]
-        public float ABREVIACION { get; set; }
+        public String ABREVIACION { get; set; }
 
     }
 }

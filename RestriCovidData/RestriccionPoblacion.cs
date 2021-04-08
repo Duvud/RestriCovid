@@ -6,6 +6,7 @@ using System.Text;
 
 namespace RestriCovidData
 {
+    [Table("restriccionPoblacion")]
     public class RestriccionPoblacion
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]

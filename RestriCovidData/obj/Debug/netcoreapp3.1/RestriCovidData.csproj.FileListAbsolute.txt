@@ -1,0 +1,9 @@
+D:\Proyecto\RestriCovid\RestriCovidData\bin\Debug\netcoreapp3.1\RestriCovidData.deps.json
+D:\Proyecto\RestriCovid\RestriCovidData\bin\Debug\netcoreapp3.1\RestriCovidData.dll
+D:\Proyecto\RestriCovid\RestriCovidData\bin\Debug\netcoreapp3.1\RestriCovidData.pdb
+D:\Proyecto\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.csprojAssemblyReference.cache
+D:\Proyecto\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.AssemblyInfoInputs.cache
+D:\Proyecto\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.AssemblyInfo.cs
+D:\Proyecto\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.csproj.CoreCompileInputs.cache
+D:\Proyecto\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.dll
+D:\Proyecto\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.pdb
