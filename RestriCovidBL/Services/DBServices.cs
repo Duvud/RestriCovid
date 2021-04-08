@@ -35,5 +35,19 @@ namespace RestriCovidBL.Services
             }).ToList();
         }
 
+        public List<RestriccionDTO> GetRestriccionesCP(int cp)
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            return dbContext.RestriccionPoblaciones.Where(dbResul => dbResul.POBLACION.CP == cp).Select(dbResul => new RestriccionDTO
+            {
+                Id = dbResul.ID,
+                Cp = dbResul.POBLACION.CP,
+                Poblacion = dbResul.POBLACION.POBLACION,
+                Abreviacion = dbResul.RESTRICCION.ABREVIACION,
+                Descripcion = dbResul.RESTRICCION.DESCRIPCION
+            }).ToList();
+        }
+
     }
 }

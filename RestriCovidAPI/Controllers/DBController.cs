@@ -41,5 +41,20 @@ namespace RestriCovidAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("restricciones/{cp}")]
+        public ActionResult GetRestriccionesCP(int cp)
+        {
+            try
+            {
+                List<RestriccionDTO> restricciones = DBServices.Instance.GetRestriccionesCP(cp);
+                return Ok(restricciones);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
