@@ -6,21 +6,15 @@ using System.Text;
 
 namespace RestriCovidData
 {
-    [Table("poblaciones")]
-    public class Poblacion
+    public class RestriccionPoblacion
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [MaxLength(100)]
-        public String POBLACION { get; set; }
+        [ForeignKey("Restriccion")]
+        public Restriccion RESTRICCION { get; set; }
 
-        public int CP { get; set; }
-
-        public string PROVINCIA { get; set; }
-
-        public float POSX { get; set; }
-
-        public float POSY { get; set; }
+        [ForeignKey("Poblacion")]
+        public Poblacion POBLACION { get; set; }
     }
 }
