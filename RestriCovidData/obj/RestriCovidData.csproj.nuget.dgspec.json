@@ -1,27 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proyecto\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {}
+    "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {}
   },
   "projects": {
-    "D:\\Proyecto\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {
+    "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proyecto\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
+        "projectUniqueName": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
         "projectName": "RestriCovidData",
-        "projectPath": "D:\\Proyecto\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
-        "packagesPath": "C:\\Users\\Aritz\\.nuget\\packages\\",
-        "outputPath": "D:\\Proyecto\\RestriCovid\\RestriCovidData\\obj\\",
+        "projectPath": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
+        "packagesPath": "C:\\Users\\Duvud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Aritz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Duvud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\FastReports\\FastReport.Net\\Nugets": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -69,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

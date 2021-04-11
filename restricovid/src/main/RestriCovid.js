@@ -1,16 +1,19 @@
-import logo from './res/img/RestriCovid.png';
-import styles from './RestriCovid.module.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Input, Button, List, Divider, Alert } from 'antd';
 import React, { useState, useEffect } from "react";
+import logo from '../res/img/RestriCovid.png';
+import styles from '../css/RestriCovid.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ListaRestricciones } from '../data/Restricciones.js';
+import { Input, Button, List, Divider, Alert } from 'antd';
+
 
 //Función principal donde almacenaremos todas las funciones y los componentes
-function RestriCovid() {
+const RestriCovid = () => {
   //Hooks useState
   const [codigoPostal, guardarCodigoPostal] = useState("");
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
   const [objRestricciones, guardarObjRestricciones] = useState({});
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
+  
 
   /**
    * Esta función valida el código postal asegurandose de que hay
@@ -29,23 +32,8 @@ function RestriCovid() {
       guardarCodigoValidado(false);
     }else{
       guardarCodigoValidado(true);
-      let datos = {
-        codigo: codigoPostal,
-        arRestricciones: [
-          {
-            id: 1,
-            zona: "Lezo",
-            restriccion:
-              "No se puede salir de casa, solo para comprar alimentos indispensables",
-          },
-          {
-            id: 2,
-            zona: "San Sebastian",
-            restriccion:
-              "No se puede salir de casa, solo para comprar alimentos indispensables",
-          },
-        ],
-      };
+      console.log("Datos api =>", ListaRestricciones());
+      let datos = [];
       guardarObjRestricciones(datos);
       console.log("objeto restricciones => ", objRestricciones);
     }

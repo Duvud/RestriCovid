@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './RestriCovid.module.css';
-import RestriCovid from './RestriCovid';
-import reportWebVitals from './reportWebVitals';
+import './css/RestriCovid.module.css';
+import RestriCovid from './main/RestriCovid';
+import reportWebVitals from './main/reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>

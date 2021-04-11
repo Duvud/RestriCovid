@@ -10,3 +10,15 @@ D:\Proyecto\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.cspr
 D:\Proyecto\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.csproj.CopyComplete
 D:\Proyecto\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.dll
 D:\Proyecto\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.pdb
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\bin\Debug\netcoreapp3.1\RestriCovidBL.deps.json
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\bin\Debug\netcoreapp3.1\RestriCovidBL.dll
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\bin\Debug\netcoreapp3.1\RestriCovidBL.pdb
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\bin\Debug\netcoreapp3.1\RestriCovidData.dll
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\bin\Debug\netcoreapp3.1\RestriCovidData.pdb
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.csprojAssemblyReference.cache
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.AssemblyInfoInputs.cache
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.AssemblyInfo.cs
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.csproj.CoreCompileInputs.cache
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.csproj.CopyComplete
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.dll
+C:\Users\Duvud\Dev\RestriCovid\RestriCovidBL\obj\Debug\netcoreapp3.1\RestriCovidBL.pdb
