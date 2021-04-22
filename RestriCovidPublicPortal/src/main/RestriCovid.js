@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import logo from '../res/img/RestriCovid.png';
 import styles from '../css/RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ListaRestricciones } from '../data/Restricciones.js';
+import Mapa from './Mapa.js';
+import ListaRestricciones from '../data/Restricciones.js';
 import { Input, Button, List, Divider, Alert } from 'antd';
+
+
 
 
 //Función principal donde almacenaremos todas las funciones y los componentes
@@ -33,7 +36,7 @@ const RestriCovid = () => {
     }else{
       guardarCodigoValidado(true);
       console.log("Datos api =>", ListaRestricciones());
-      let datos = [];
+      let datos = ListaRestricciones();
       guardarObjRestricciones(datos);
       console.log("objeto restricciones => ", objRestricciones);
     }
@@ -112,6 +115,10 @@ const RestriCovid = () => {
           </Button>
         </div>
       </div>
+      <div id="container">
+        <Mapa></Mapa>
+      </div>
+
       {boolMostrarRestricciones === true && boolCodigoValidado === true ? (
         <>
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>

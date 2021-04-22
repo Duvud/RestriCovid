@@ -6135,23 +6135,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\2smr2\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Duvud\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2smr2\\Desktop\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
+      "projectUniqueName": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
       "projectName": "RestriCovidData",
-      "projectPath": "C:\\Users\\2smr2\\Desktop\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
-      "packagesPath": "C:\\Users\\2smr2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2smr2\\Desktop\\RestriCovid\\RestriCovidData\\obj\\",
+      "projectPath": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
+      "packagesPath": "C:\\Users\\Duvud\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\2smr2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Duvud\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6206,7 +6208,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
