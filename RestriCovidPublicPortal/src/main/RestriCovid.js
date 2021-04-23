@@ -6,6 +6,8 @@ import { Restricciones } from '../data/Restricciones.js';
 import { Input, Button, List, Divider, Alert } from 'antd';
 
 
+
+
 //Función principal donde almacenaremos todas las funciones y los componentes
 const RestriCovid = () => {
   //Hooks useState
@@ -110,6 +112,10 @@ const RestriCovid = () => {
           </Button>
         </div>
       </div>
+      <div id="container">
+        <Mapa></Mapa>
+      </div>
+
       {boolMostrarRestricciones === true && boolCodigoValidado === true ? (
         <>
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>

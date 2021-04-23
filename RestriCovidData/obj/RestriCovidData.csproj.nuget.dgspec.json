@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "/home/duvud/Dev/RestriCovid/RestriCovidData/RestriCovidData.csproj": {}
   },
   "projects": {
@@ -15,6 +16,28 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/duvud/.nuget/NuGet/NuGet.Config"
+=======
+    "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
+        "projectName": "RestriCovidData",
+        "projectPath": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj",
+        "packagesPath": "C:\\Users\\Duvud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Duvud\\Dev\\RestriCovid\\RestriCovidData\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Duvud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> d632685a989ebf37700a17f4dd59f377911187ad
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -64,7 +87,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.408/RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> d632685a989ebf37700a17f4dd59f377911187ad
         }
       }
     }

@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Cors;
 namespace RestriCovidAPI.Controllers
 {
     [ApiController]
-    [EnableCors]
     [Route("RestriCovid")]
     public class DBController : ControllerBase
     {
@@ -30,7 +29,6 @@ namespace RestriCovidAPI.Controllers
         {
             return Ok("La API funciona correctamente.");
         }
-        [EnableCors]
         [HttpGet("restricciones")]
         public ActionResult GetRestricciones()
         {
