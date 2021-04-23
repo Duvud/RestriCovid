@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from '../res/img/RestriCovid.png';
 import styles from '../css/RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ListaRestricciones } from '../data/Restricciones.js';
+import { Restricciones } from '../data/Restricciones.js';
 import { Input, Button, List, Divider, Alert } from 'antd';
 
 
@@ -11,7 +11,7 @@ const RestriCovid = () => {
   //Hooks useState
   const [codigoPostal, guardarCodigoPostal] = useState("");
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
-  const [objRestricciones, guardarObjRestricciones] = useState({});
+  const [arRestricciones, guardarArRestricciones] = useState([]);
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
   
 
@@ -27,15 +27,13 @@ const RestriCovid = () => {
   }
 
   //Está función cargará los datos haciendo una petición a la API y llama al validador de código postal
-  const MostrarRestricciones = codigoPostal => {
+  const MostrarRestricciones = async codigoPostal => {
     if(ValidarCodigoPostal(codigoPostal) === false){
       guardarCodigoValidado(false);
     }else{
       guardarCodigoValidado(true);
-      console.log("Datos api =>", ListaRestricciones());
-      let datos = [];
-      guardarObjRestricciones(datos);
-      console.log("objeto restricciones => ", objRestricciones);
+      guardarArRestricciones(await Restricciones());
+      console.log("objeto restricciones => ", await Restricciones());
     }
   }
 
@@ -44,10 +42,10 @@ const RestriCovid = () => {
    * si los datos de la API han llegado
    */
   useEffect(() => {
-    if (objRestricciones.arRestricciones !== undefined) {
+    if (arRestricciones !== [] || arRestricciones.length !== 0) {
       guardarBoolMostrarRestricciones(true);
     }
-  }, [objRestricciones]);
+  }, [arRestricciones]);
 
   //Componente que prepara el logo centrado en la parte superior de la página
   function Logo(props) {
@@ -71,10 +69,10 @@ const RestriCovid = () => {
           <Divider orientation="center">Restricciones</Divider>
           <List
             bordered
-            dataSource={props.datos.arRestricciones}
-            renderItem={item => (
+            dataSource={arRestricciones}
+            renderItem={restriccion => (
             <List.Item>
-                {` ${item.zona} : ${item.restriccion} `}
+                {` ${restriccion.poblacion} : ${restriccion.abreviacion}`}
             </List.Item>
             )}
            />
@@ -118,7 +116,7 @@ const RestriCovid = () => {
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
           <div >
-            <Restricciones datos={objRestricciones}></Restricciones>
+            <Restricciones datos={arRestricciones}></Restricciones>
           </div>
         </>
       ) : boolCodigoValidado === false ? (
