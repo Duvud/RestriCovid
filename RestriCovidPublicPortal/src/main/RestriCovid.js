@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import logo from '../res/img/RestriCovid.png';
 import styles from '../css/RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Restricciones } from '../data/Restricciones.js';
+import { Restricciones, RestriccionesCodigoPostal } from '../data/Restricciones.js';
 import { Input, Button, List, Divider, Alert } from 'antd';
+import { Mapa } from '../mapa/Mapa.js';
 
 
 
@@ -33,9 +34,14 @@ const RestriCovid = () => {
     if(ValidarCodigoPostal(codigoPostal) === false){
       guardarCodigoValidado(false);
     }else{
-      guardarCodigoValidado(true);
-      guardarArRestricciones(await Restricciones());
-      console.log("objeto restricciones => ", await Restricciones());
+      if(await (await RestriccionesCodigoPostal(codigoPostal)).length !== 0){
+        guardarCodigoValidado(true);
+        guardarArRestricciones(await RestriccionesCodigoPostal(codigoPostal));
+        console.log("objeto restricciones => ", await RestriccionesCodigoPostal(codigoPostal));
+      }else{
+        guardarCodigoValidado(undefined);
+      }
+      
     }
   }
 
@@ -112,9 +118,11 @@ const RestriCovid = () => {
           </Button>
         </div>
       </div>
+      
       <div id="container">
         <Mapa></Mapa>
       </div>
+       
 
       {boolMostrarRestricciones === true && boolCodigoValidado === true ? (
         <>
@@ -129,6 +137,13 @@ const RestriCovid = () => {
         <>
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="error" message="Por favor, introduce el formato de codigo postal correcto ('12345' por ejemplo)" />
+          </div>
+        </>
+      ) : boolCodigoValidado === undefined ? (
+        <>
+          <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+            <Alert type="error" message="Lo siento, ha ocurrido un error al intentar obtener los datos, por favor, asegurese de que está
+            introduciendo un código postal de la región del País Vasco" />
           </div>
         </>
       ) : null}

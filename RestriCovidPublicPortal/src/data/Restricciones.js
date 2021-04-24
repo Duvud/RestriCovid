@@ -14,10 +14,12 @@ export const Restricciones = async () => {
 
 
 export const RestriccionesCodigoPostal = async (codigoPostal) => {
-    const url = 'https://localhost:5001/RestriCovid/restricciones';
+    const url = `https://localhost:5001/RestriCovid/restricciones/${codigoPostal}`;
     let datosCodigoPostal = [];
 
     await fetch(url).then(response => response.json()).then(data => datosCodigoPostal = data);
+    console.log( "url =>" , url);
+    console.log(datosCodigoPostal);
     return datosCodigoPostal;
 }
 

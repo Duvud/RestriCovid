@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
@@ -15,6 +15,5 @@
     <ProjectReference Include="..\RestriCovidBL\RestriCovidBL.csproj" />
     <ProjectReference Include="..\RestriCovidData\RestriCovidData.csproj" />
   </ItemGroup>
-
-
+  
 </Project>
