@@ -1,6 +1,3 @@
-import {React, useState} from "react";
-import axios from 'axios';
-
 
 //Este metodo devuelve todas las restricciones de la api en un array de objetos
 export const Restricciones = async () => {
@@ -21,6 +18,16 @@ export const RestriccionesCodigoPostal = async (codigoPostal) => {
     console.log( "url =>" , url);
     console.log(datosCodigoPostal);
     return datosCodigoPostal;
+}
+
+export const Poblaciones = async () => {
+    const url = 'https://localhost:5001/RestriCovid/poblaciones';
+    let datosPoblaciones = [];
+
+    await fetch(url).then(response => response.json()).then(data => datosPoblaciones = data);
+    console.log( "url =>" , url);
+    console.log(datosPoblaciones);
+    return datosPoblaciones;
 }
 
 export default Restricciones;

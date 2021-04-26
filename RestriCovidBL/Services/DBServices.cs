@@ -49,5 +49,20 @@ namespace RestriCovidBL.Services
             }).ToList();
         }
 
+        public List<PoblacionDTO> GetPoblaciones()
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            return dbContext.Poblaciones.Select(dbResul => new PoblacionDTO
+            {
+                Id = dbResul.ID,
+                Poblacion = dbResul.POBLACION,
+                Provincia = dbResul.PROVINCIA,
+                PosX = dbResul.POSX,
+                PosY = dbResul.POSY,
+                Cp = dbResul.CP
+            }).ToList();
+        }
+
     }
 }

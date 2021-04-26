@@ -55,6 +55,18 @@ namespace RestriCovidAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        
+        [HttpGet("poblaciones")]
+        public ActionResult GetPoblaciones()
+        {
+            try
+            {
+                List<PoblacionDTO> poblaciones = DBServices.Instance.GetPoblaciones();
+                return Ok(poblaciones);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

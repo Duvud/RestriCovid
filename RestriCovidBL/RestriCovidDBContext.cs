@@ -17,7 +17,7 @@ namespace RestriCovidBL
             conString.Port = 3306;
             conString.Database = "restricovid";
             conString.UserID = "root";
-            string connectionString = @"server=localhost;port=3306;database=restricovid;uid=root;";
+            //string connectionString = @"server=localhost;port=3306;database=restricovid;uid=root;";
 
             optionsBuilder.UseMySQL(conString.ToString());
         }

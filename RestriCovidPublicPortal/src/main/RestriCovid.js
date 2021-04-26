@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import logo from '../res/img/RestriCovid.png';
 import styles from '../css/RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Restricciones, RestriccionesCodigoPostal } from '../data/Restricciones.js';
-import { Input, Button, List, Divider, Alert } from 'antd';
+import { Poblaciones, RestriccionesCodigoPostal } from '../data/APIController.js';
+import { Input, Button, Alert } from 'antd';
 import { Mapa } from '../mapa/Mapa.js';
 
 
@@ -16,8 +16,8 @@ const RestriCovid = () => {
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
   const [arRestricciones, guardarArRestricciones] = useState([]);
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
+  const [arPoblaciones, guardarArPoblaciones] = useState([]);
   
-
   /**
    * Esta función valida el código postal asegurandose de que hay
    * 5 numeros del 0-9 y que no haya ningún otro caracter
@@ -46,6 +46,30 @@ const RestriCovid = () => {
   }
 
   /**
+   * Esta función es llamada
+   * por un hook para cargar las poblaciones
+   * lo único que hace es llamar a el metodo importado
+   * poblaciones que consigue los datos
+   * y después guardarlos en el hook arPoblaciones
+   */
+  const cargarPoblaciones = async () => {
+    let datosPoblaciones = await Poblaciones();
+    console.log("Datos poblaciones => ",datosPoblaciones);
+    guardarArPoblaciones(datosPoblaciones);
+  }
+
+
+  /**
+   * Este useEffect llama a la funcion que carga las poblaciones
+   * una vez se inicia la página para poder generar los marcadores del mapa
+   */
+  useEffect(() => {
+    if(arPoblaciones.length === 0){
+      cargarPoblaciones();
+    }
+  },);
+
+  /**
    * Este useEffect activa la generación de tabla de restricciones
    * si los datos de la API han llegado
    */
@@ -54,6 +78,7 @@ const RestriCovid = () => {
       guardarBoolMostrarRestricciones(true);
     }
   }, [arRestricciones]);
+
 
   //Componente que prepara el logo centrado en la parte superior de la página
   function Logo(props) {
@@ -74,16 +99,15 @@ const RestriCovid = () => {
     return (
       <>
         <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
-          <Divider orientation="center">Restricciones</Divider>
-          <List
-            bordered
-            dataSource={arRestricciones}
-            renderItem={restriccion => (
-            <List.Item>
-                {` ${restriccion.poblacion} : ${restriccion.abreviacion}`}
-            </List.Item>
-            )}
-           />
+          <ul className={'list-group'}>
+              {props.datos.map( restriccion => {
+                return(
+                  <>
+                    <li className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion}`}</li>
+                  </>
+                )
+              } )}
+          </ul>
         </div>
       </>
     );
@@ -96,7 +120,7 @@ const RestriCovid = () => {
         <div className={'mb-1'}>
           <label>Introduce tu código postal</label>
         </div>
-        <div className={`mt-6 m-auto col-xl-4 col-lg-6 col-md-7 col-sm-9 col-12`}>
+        <div className={`mt-6 m-auto col-xl-6 col-lg-7 col-md-8 col-sm-10 col-11`}>
           <Input
             id="id"
             key={"inputPostal"}
@@ -120,7 +144,7 @@ const RestriCovid = () => {
       </div>
       
       <div id="container">
-        <Mapa></Mapa>
+        <Mapa datos={arPoblaciones} funcionMarcadores={MostrarRestricciones}></Mapa>
       </div>
        
 
@@ -129,7 +153,7 @@ const RestriCovid = () => {
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
-          <div >
+          <div className={` mb-5 mt-3`}>
             <Restricciones datos={arRestricciones}></Restricciones>
           </div>
         </>
