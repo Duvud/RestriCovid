@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(208, 255, 233) !important;
+}
+
+input{
+    background-color: white;
+}
+
+.dImagen{
+    margin: 0 auto;
+    width: 25vw;
+    height: 25vh;
+    text-align: center;
+}
+.dImagen img{
+    width: 100%;
+    height: auto;
+}
+
+.dPostal{
+    text-align: center;
+}
+
