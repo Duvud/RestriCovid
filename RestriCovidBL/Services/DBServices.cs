@@ -1,4 +1,5 @@
 ﻿using RestriCovidBL.DTO;
+using RestriCovidData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace RestriCovidBL.Services
             {
                 Id = dbResul.ID,
                 Cp = dbResul.POBLACION.CP,
+                Codigo = dbResul.RESTRICCION.CODIGO,
                 Poblacion = dbResul.POBLACION.POBLACION,
                 Abreviacion = dbResul.RESTRICCION.ABREVIACION,
                 Descripcion = dbResul.RESTRICCION.DESCRIPCION
@@ -62,6 +64,61 @@ namespace RestriCovidBL.Services
                 PosY = dbResul.POSY,
                 Cp = dbResul.CP
             }).ToList();
+        }
+
+        public RestriccionDTO UpdateRestriccion(RestriccionDTO restriccion)
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            var resul = dbContext.Restricciones.Where(restri => restri.ID == restriccion.Id).FirstOrDefault();
+
+            resul.CODIGO = restriccion.Codigo;
+            resul.DESCRIPCION = restriccion.Descripcion;
+            resul.ABREVIACION = restriccion.Abreviacion;
+
+            dbContext.SaveChanges();
+            return restriccion;
+        }
+
+        public PoblacionDTO UpdatePoblacion(PoblacionDTO poblacion)
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            var resul = dbContext.Poblaciones.Where(restri => restri.ID == poblacion.Id).FirstOrDefault();
+
+            resul.CP = poblacion.Cp;
+            resul.POBLACION = poblacion.Poblacion;
+            resul.POSX = poblacion.PosX;
+            resul.POSY = poblacion.PosY;
+            resul.PROVINCIA = poblacion.Provincia;
+
+            dbContext.SaveChanges();
+            return poblacion;
+        }
+
+        public Boolean DeleteRestriccion(int id)
+        {
+
+            using var dbContext = new RestriCovidDBContext();
+
+            var resul = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
+            dbContext.Restricciones.Remove(resul);
+
+            dbContext.SaveChanges();
+
+            return true;
+        }
+
+        public Boolean DeletePoblacion(int id)
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            var resul = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
+            dbContext.Restricciones.Remove(resul);
+
+            dbContext.SaveChanges();
+
+            return true;
         }
 
     }

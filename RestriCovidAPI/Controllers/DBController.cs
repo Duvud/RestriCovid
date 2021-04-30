@@ -34,9 +34,9 @@ namespace RestriCovidAPI.Controllers
         {
             try
             {
-                List<RestriccionDTO> restricciones = DBServices.Instance.GetRestricciones();
-                return Ok(restricciones);
-            }catch(Exception ex)
+                return Ok(DBServices.Instance.GetRestricciones());
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -47,26 +47,80 @@ namespace RestriCovidAPI.Controllers
         {
             try
             {
-                List<RestriccionDTO> restricciones = DBServices.Instance.GetRestriccionesCP(cp);
-                return Ok(restricciones);
+                return Ok(DBServices.Instance.GetRestriccionesCP(cp));
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-        
+
         [HttpGet("poblaciones")]
         public ActionResult GetPoblaciones()
         {
             try
             {
-                List<PoblacionDTO> poblaciones = DBServices.Instance.GetPoblaciones();
-                return Ok(poblaciones);
-            }catch(Exception ex)
+                return Ok(DBServices.Instance.GetPoblaciones());
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("updateRestriccion/{restriccion}")]
+        public ActionResult UpdateRestriccion(RestriccionDTO restriccion)
+        {
+            try
+            {
+                return Ok(DBServices.Instance.UpdateRestriccion(restriccion));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpPost("updatePoblacion/{poblacion}")]
+        public ActionResult UpdatePoblacion(PoblacionDTO poblacion)
+        {
+            try
+            {
+                return Ok(DBServices.Instance.UpdatePoblacion(poblacion));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("deleteRestriccion/{id}")]
+        public ActionResult DeleteRestriccion(int id)
+        {
+            try
+            {
+                return Ok(DBServices.Instance.DeleteRestriccion(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("deletePoblacion/{id}")]
+        public ActionResult DeletePoblacion(int id)
+        {
+            try
+            {
+                return Ok(DBServices.Instance.DeletePoblacion(id));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
