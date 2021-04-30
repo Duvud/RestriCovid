@@ -12,6 +12,7 @@ namespace RestriCovidBL.DTO
 
         public int Cp { get; set; }
 
+        public String Codigo { get; set; }
         public String Poblacion { get; set; }
 
         public String Abreviacion { get; set; }
