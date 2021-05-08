@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(208, 255, 233) !important;
+    background-color: rgb(236, 252, 251) !important;
 }
 
 input{
@@ -8,8 +8,8 @@ input{
 
 .dImagen{
     margin: 0 auto;
-    width: 25vw;
-    height: 25vh;
+    width: 20vw;
+    height: 20vh;
     text-align: center;
 }
 .dImagen img{
@@ -17,7 +17,16 @@ input{
     height: auto;
 }
 
-.dPostal{
+.dSubtitulo{
+    margin: 0em auto;
     text-align: center;
 }
 
+.dPostal{
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.btnAsignarRestriccion{
+    margin-top:10vh;
+}

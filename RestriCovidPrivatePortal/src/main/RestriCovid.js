@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import logo from '../res/img/RestriCovid.png';
 import styles from '../css/RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Poblaciones, RestriccionesCodigoPostal } from '../data/APIController.js';
+import { Poblaciones, RestriccionesCodigoPostal} from '../data/APIController.js';
 import { Input, Button, Alert } from 'antd';
-import { Mapa } from '../mapa/Mapa.js';
-
+import BotonEliminar from '../ui/BotonEliminar'
+import FormRestricciones from '../ui/FormRestricciones';
+import DatosRestricciones from '../data/APIController'
 
 
 
 //Función principal donde almacenaremos todas las funciones y los componentes
 const RestriCovid = () => {
   //Hooks useState
-  const [codigoPostal, guardarCodigoPostal] = useState("");
+  const [codigoPostal, guardarCodigoPostal] = useState("20100");
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
   const [arRestricciones, guardarArRestricciones] = useState([]);
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
   const [arPoblaciones, guardarArPoblaciones] = useState([]);
+  const [arDatosSelect, guardarArSelect] = useState([]);
   
   /**
    * Esta función valida el código postal asegurandose de que hay
@@ -37,14 +39,23 @@ const RestriCovid = () => {
       if(await (await RestriccionesCodigoPostal(codigoPostal)).length !== 0){
         guardarCodigoValidado(true);
         guardarArRestricciones(await RestriccionesCodigoPostal(codigoPostal));
-        console.log("objeto restricciones => ", await RestriccionesCodigoPostal(codigoPostal));
       }else{
         guardarCodigoValidado(undefined);
       }
       
     }
   }
+  
 
+  const PrepararRestriccionesSelect = async () =>{
+    let datosRestricciones = await DatosRestricciones();
+    if(datosRestricciones !== undefined){
+      guardarArSelect(datosRestricciones);
+    }
+  }
+
+  
+  
   /**
    * Esta función es llamada
    * por un hook para cargar las poblaciones
@@ -52,10 +63,11 @@ const RestriCovid = () => {
    * poblaciones que consigue los datos
    * y después guardarlos en el hook arPoblaciones
    */
-  const cargarPoblaciones = async () => {
+  const CargarPoblaciones = async () => {
     let datosPoblaciones = await Poblaciones();
-    console.log("Datos poblaciones => ",datosPoblaciones);
-    guardarArPoblaciones(datosPoblaciones);
+    if(datosPoblaciones !== undefined){
+      guardarArPoblaciones(datosPoblaciones);
+    }
   }
 
 
@@ -64,8 +76,10 @@ const RestriCovid = () => {
    * una vez se inicia la página para poder generar los marcadores del mapa
    */
   useEffect(() => {
+    MostrarRestricciones(codigoPostal);
+    PrepararRestriccionesSelect();
     if(arPoblaciones.length === 0){
-      cargarPoblaciones();
+      CargarPoblaciones();
     }
   },);
 
@@ -74,7 +88,7 @@ const RestriCovid = () => {
    * si los datos de la API han llegado
    */
   useEffect(() => {
-    if (arRestricciones !== [] || arRestricciones.length !== 0) {
+    if (arRestricciones !== [] && arRestricciones.length !== 0) {
       guardarBoolMostrarRestricciones(true);
     }
   }, [arRestricciones]);
@@ -83,9 +97,14 @@ const RestriCovid = () => {
   //Componente que prepara el logo centrado en la parte superior de la página
   function Logo(props) {
     return (
+      <>
       <div className={`${styles.dImagen} col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8`}>
-        <img src={logo} alt="Logo RestriCovid" />
+        <img src={logo} alt="Logo RestriCovid" />  
       </div>
+      <div className={`${styles.dSubtitulo} col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8`}>
+        <h3>Portal privado</h3>
+      </div>
+      </>
     );
   }
 
@@ -100,10 +119,10 @@ const RestriCovid = () => {
       <>
         <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
           <ul className={'list-group'}>
-              {props.datos.map( restriccion => {
+              {props.datosRestricciones.map( restriccion => {
                 return(
                   <>
-                    <li className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion}`}</li>
+                    <li className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion} `} <BotonEliminar datosRestriccion={restriccion} texto={'Eliminar restricción'}></BotonEliminar></li>
                   </>
                 )
               } )}
@@ -115,63 +134,40 @@ const RestriCovid = () => {
 
   return (
     <>
+    <div className={'mb-5'}>
       <Logo></Logo>
-      <div className={`${styles.dPostal}`}>
-        <div className={'mb-1'}>
-          <label>Introduce tu código postal</label>
-        </div>
-        <div className={`mt-6 m-auto col-xl-6 col-lg-7 col-md-8 col-sm-10 col-11`}>
-          <Input
-            id="id"
-            key={"inputPostal"}
-            type="text"
-            defaultValue={codigoPostal}
-            onChange={(e) => {
-              guardarCodigoPostal(e.target.value);
-            }}
-          />
-        </div>
-
-        <div className={"mt-3"}>
-          <Button
-            className={"mb-5 "}
-            id="btnMostrarRestricciones"
-            onClick={() => MostrarRestricciones(codigoPostal)}
-          >
-            Mostrar Restricciones
-          </Button>
-        </div>
-      </div>
-      
-      <div id="container">
-        <Mapa datos={arPoblaciones} funcionMarcadores={MostrarRestricciones}></Mapa>
-      </div>
-       
+    </div>       
 
       {boolMostrarRestricciones === true && boolCodigoValidado === true ? (
         <>
-          <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+          <div className={`mt-8 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
-          <div className={` mb-5 mt-3`}>
-            <Restricciones datos={arRestricciones}></Restricciones>
+          <div className={`mb-5 mt-3`}>
+            <Restricciones datosRestricciones={arRestricciones}></Restricciones>
           </div>
         </>
       ) : boolCodigoValidado === false ? (
         <>
-          <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+          <div className={`mt-2mt-2 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="error" message="Por favor, introduce el formato de codigo postal correcto ('12345' por ejemplo)" />
           </div>
         </>
       ) : boolCodigoValidado === undefined ? (
         <>
-          <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+          <div className={`mt-2 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="error" message="Lo siento, ha ocurrido un error al intentar obtener los datos, por favor, asegurese de que está
             introduciendo un código postal de la región del País Vasco" />
           </div>
         </>
       ) : null}
+      <div>
+        <FormRestricciones datos={arDatosSelect}></FormRestricciones>
+      </div>
     </>
+    
+    
+
   );
 }
 

@@ -101,23 +101,31 @@ namespace RestriCovidBL.Services
 
             using var dbContext = new RestriCovidDBContext();
 
+            
             var resul = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
-            dbContext.Restricciones.Remove(resul);
+            if (resul != null)
+            {
+                dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x=> x.RESTRICCION.ID == id));
+                dbContext.SaveChanges();
+                dbContext.Restricciones.Remove(resul);
+                dbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-            dbContext.SaveChanges();
-
-            return true;
         }
 
         public Boolean DeletePoblacion(int id)
         {
             using var dbContext = new RestriCovidDBContext();
 
-            var resul = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
-            dbContext.Restricciones.Remove(resul);
-
+            var restriccion = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
+            dbContext.Restricciones.Remove(restriccion);
+            
             dbContext.SaveChanges();
-
             return true;
         }
 
