@@ -101,13 +101,74 @@ namespace RestriCovidBL.Services
 
             using var dbContext = new RestriCovidDBContext();
 
-            
-            var resul = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
-            if (resul != null)
+            if (dbContext.Restricciones.Where(x => x.ID == id).FirstOrDefault() != null)
             {
-                dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x=> x.RESTRICCION.ID == id));
+                if (dbContext.RestriccionPoblaciones.Where(x => x.RESTRICCION.ID == id).FirstOrDefault() != null)
+                {
+                    dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x => x.RESTRICCION.ID == id));
+                    dbContext.SaveChanges();
+                }
+                dbContext.Restricciones.RemoveRange(dbContext.Restricciones.Where(restriccion => restriccion.ID == id));
                 dbContext.SaveChanges();
-                dbContext.Restricciones.Remove(resul);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+        }
+
+        public Boolean DeletePoblacion(int id)
+        {
+
+            using var dbContext = new RestriCovidDBContext();
+
+            if (dbContext.Poblaciones.Where(x => x.ID == id).FirstOrDefault() != null)
+            {
+                if (dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == id).FirstOrDefault() != null)
+                {
+                    dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == id));
+                    dbContext.SaveChanges();
+                }
+                dbContext.Poblaciones.RemoveRange(dbContext.Poblaciones.Where(restriccion => restriccion.ID == id));
+                dbContext.SaveChanges();
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean InsertRestriccionPoblacion(int idRestriccion, int idPoblacion)
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            var poblacion = dbContext.Poblaciones.Where(poblacion => poblacion.ID == idPoblacion).FirstOrDefault();
+            var restriccion = dbContext.Restricciones.Where(restriccion => restriccion.ID == idRestriccion).FirstOrDefault();
+
+            RestriccionPoblacion rp = new RestriccionPoblacion();
+            rp.POBLACION = poblacion;
+            rp.RESTRICCION = restriccion;
+
+            dbContext.RestriccionPoblaciones.Add(rp);
+            dbContext.SaveChanges();
+            return true;
+        }
+
+        public Boolean DeleteRestriccionPoblacion(int id)
+        {
+
+            using var dbContext = new RestriCovidDBContext();
+
+            if (dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == id).FirstOrDefault() != null)
+            {
+                dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == id));
                 dbContext.SaveChanges();
                 return true;
             }
@@ -118,16 +179,6 @@ namespace RestriCovidBL.Services
 
         }
 
-        public Boolean DeletePoblacion(int id)
-        {
-            using var dbContext = new RestriCovidDBContext();
-
-            var restriccion = dbContext.Restricciones.Where(restriccion => restriccion.ID == id).FirstOrDefault();
-            dbContext.Restricciones.Remove(restriccion);
-            
-            dbContext.SaveChanges();
-            return true;
-        }
 
     }
 }

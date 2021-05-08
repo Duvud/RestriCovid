@@ -34,3 +34,12 @@ C:/Users/2smr2/Desktop/RestriCovid/RestriCovidData/obj/Debug/netcoreapp3.1/Restr
 /home/duvud/Dev/RestriCovid/RestriCovidData/obj/Debug/netcoreapp3.1/RestriCovidData.csproj.CoreCompileInputs.cache
 /home/duvud/Dev/RestriCovid/RestriCovidData/obj/Debug/netcoreapp3.1/RestriCovidData.dll
 /home/duvud/Dev/RestriCovid/RestriCovidData/obj/Debug/netcoreapp3.1/RestriCovidData.pdb
+C:\RestriCovid\RestriCovidData\bin\Debug\netcoreapp3.1\RestriCovidData.deps.json
+C:\RestriCovid\RestriCovidData\bin\Debug\netcoreapp3.1\RestriCovidData.dll
+C:\RestriCovid\RestriCovidData\bin\Debug\netcoreapp3.1\RestriCovidData.pdb
+C:\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.csprojAssemblyReference.cache
+C:\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.AssemblyInfoInputs.cache
+C:\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.AssemblyInfo.cs
+C:\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.csproj.CoreCompileInputs.cache
+C:\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.dll
+C:\RestriCovid\RestriCovidData\obj\Debug\netcoreapp3.1\RestriCovidData.pdb

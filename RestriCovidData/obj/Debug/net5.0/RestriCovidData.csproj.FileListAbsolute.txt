@@ -1,0 +1,12 @@
+C:\RestriCovid\RestriCovidData\bin\Debug\net5.0\RestriCovidData.deps.json
+C:\RestriCovid\RestriCovidData\bin\Debug\net5.0\RestriCovidData.dll
+C:\RestriCovid\RestriCovidData\bin\Debug\net5.0\ref\RestriCovidData.dll
+C:\RestriCovid\RestriCovidData\bin\Debug\net5.0\RestriCovidData.pdb
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.csprojAssemblyReference.cache
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.GeneratedMSBuildEditorConfig.editorconfig
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.AssemblyInfoInputs.cache
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.AssemblyInfo.cs
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.csproj.CoreCompileInputs.cache
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.dll
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\ref\RestriCovidData.dll
+C:\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.pdb
