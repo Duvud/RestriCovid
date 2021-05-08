@@ -7,7 +7,7 @@ using System.Text;
 
 namespace RestriCovidBL
 {
-    class RestriCovidDBContext : DbContext
+    public class RestriCovidDBContext : DbContext
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

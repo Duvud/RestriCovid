@@ -95,6 +95,7 @@ namespace RestriCovidAPI.Controllers
             }
         }
 
+        
         [HttpDelete("deleteRestriccion/{id}")]
         public ActionResult DeleteRestriccion(int id)
         {
@@ -122,5 +123,33 @@ namespace RestriCovidAPI.Controllers
             }
         }
 
+        [HttpDelete]
+        public ActionResult DeleteRestriccionPoblacion(int id)
+        {
+            try
+            {
+                return Ok(DBServices.Instance.DeleteRestriccionPoblacion(id));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        //?idRestriccion={idRestriccion}&idPoblacion={idPoblacion}
+        [HttpPut("insertRestriccionPoblacion/")]
+        public ActionResult InsertRestriccionPoblacion(int idRestriccion, int idPoblacion)
+        {
+            try
+            {
+                return Ok(DBServices.Instance.InsertRestriccionPoblacion(idRestriccion,idPoblacion));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
