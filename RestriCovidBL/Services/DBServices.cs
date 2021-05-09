@@ -161,14 +161,14 @@ namespace RestriCovidBL.Services
             return true;
         }
 
-        public Boolean DeleteRestriccionPoblacion(int id)
+        public Boolean DeleteRestriccionPoblacion(int idRestriccion, int idPoblacion)
         {
 
             using var dbContext = new RestriCovidDBContext();
 
-            if (dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == id).FirstOrDefault() != null)
+            if (dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == idPoblacion && x.RESTRICCION.ID == idRestriccion).FirstOrDefault() != null)
             {
-                dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == id));
+                dbContext.RestriccionPoblaciones.RemoveRange(dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == idPoblacion && x.RESTRICCION.ID == idRestriccion ));
                 dbContext.SaveChanges();
                 return true;
             }

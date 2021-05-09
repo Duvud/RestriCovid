@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import logo from '../res/img/RestriCovid.png';
 import styles from '../css/RestriCovid.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Poblaciones, RestriccionesCodigoPostal} from '../data/APIController.js';
-import { Input, Button, Alert } from 'antd';
+import { Poblaciones, RestriccionesCodigoPostal, DatosRestricciones} from '../data/APIController.js';
+//import { Input, Button, Alert } from 'antd';
+import { Alert } from 'antd';
 import BotonEliminar from '../ui/BotonEliminar'
 import FormRestricciones from '../ui/FormRestricciones';
-import DatosRestricciones from '../data/APIController'
+
 
 
 
 //Función principal donde almacenaremos todas las funciones y los componentes
 const RestriCovid = () => {
   //Hooks useState
-  const [codigoPostal, guardarCodigoPostal] = useState("20100");
+  const [codigoPostal, guardarCodigoPostal] = useState({value:"20100",id:1});
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
   const [arRestricciones, guardarArRestricciones] = useState([]);
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
@@ -30,6 +31,8 @@ const RestriCovid = () => {
   const ValidarCodigoPostal = codigoPostal => {
     return /[0-9]{5}/.test(codigoPostal) && /[^0-9]/.test(codigoPostal) === false ?  true : false
   }
+
+  
 
   //Está función cargará los datos haciendo una petición a la API y llama al validador de código postal
   const MostrarRestricciones = async codigoPostal => {
@@ -76,7 +79,7 @@ const RestriCovid = () => {
    * una vez se inicia la página para poder generar los marcadores del mapa
    */
   useEffect(() => {
-    MostrarRestricciones(codigoPostal);
+    MostrarRestricciones("20100");
     PrepararRestriccionesSelect();
     if(arPoblaciones.length === 0){
       CargarPoblaciones();
@@ -162,7 +165,7 @@ const RestriCovid = () => {
         </>
       ) : null}
       <div>
-        <FormRestricciones datos={arDatosSelect}></FormRestricciones>
+        <FormRestricciones datos={arDatosSelect} poblacion={codigoPostal}></FormRestricciones>
       </div>
     </>
     

@@ -1,6 +1,7 @@
 import {useState, React} from 'react';
 import Select from 'react-select';
 import styles from '../css/RestriCovid.module.css';
+import AsignarRestriccion from '../data/APIController'
 
 
 export const FormRestricciones =  (props) => {
@@ -12,25 +13,18 @@ export const FormRestricciones =  (props) => {
             arAux.push(
                 {
                     label:`${restriccion.id} : ${restriccion.abreviacion}`,
-                    value:`${restriccion.id} : ${restriccion.abreviacion}`
-                    
+                    value:restriccion.id
                 }
             );
         })
         return arAux;
     }
 
-    const asignarRestricciones = () => {
-        arAsignarRestriccion.forEach( restriccion => {
-            
-        })
+    const asignarRestricciones = (poblacion,restricciones) => {
+            console.log(poblacion,restricciones);         
     }
 
-
-
     let datosAdaptados = adaptarDatos();
-
-    
 
     return (
         <>
@@ -42,9 +36,8 @@ export const FormRestricciones =  (props) => {
                 onChange={(e) => guardarAsignarRestriccion(e)}
                 className={'m-auto col-4'}
                 placeholder={'Elige las restricciones que quieras asignar'}
-
             />
-            <button className={`${styles.btnAsignarRestriccion}`}>Asignar restriccion</button> 
+            <button onClick={() => asignarRestricciones(arAsignarRestriccion,props.poblacion.id)} className={`${styles.btnAsignarRestriccion}`}>Asignar restriccion</button> 
         </div>       
         </>
     )
