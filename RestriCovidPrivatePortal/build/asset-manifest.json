@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.177e6b4a.chunk.css",
+    "main.js": "/static/js/main.aa359d4f.chunk.js",
+    "main.js.map": "/static/js/main.aa359d4f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a790dae7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a790dae7.js.map",
+    "static/css/2.0a75e915.chunk.css": "/static/css/2.0a75e915.chunk.css",
+    "static/js/2.bc4f34e2.chunk.js": "/static/js/2.bc4f34e2.chunk.js",
+    "static/js/2.bc4f34e2.chunk.js.map": "/static/js/2.bc4f34e2.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.0a75e915.chunk.css.map": "/static/css/2.0a75e915.chunk.css.map",
+    "static/css/main.177e6b4a.chunk.css.map": "/static/css/main.177e6b4a.chunk.css.map",
+    "static/js/2.bc4f34e2.chunk.js.LICENSE.txt": "/static/js/2.bc4f34e2.chunk.js.LICENSE.txt",
+    "static/media/RestriCovid.ab406c26.png": "/static/media/RestriCovid.ab406c26.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a790dae7.js",
+    "static/css/2.0a75e915.chunk.css",
+    "static/js/2.bc4f34e2.chunk.js",
+    "static/css/main.177e6b4a.chunk.css",
+    "static/js/main.aa359d4f.chunk.js"
+  ]
+}

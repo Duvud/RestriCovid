@@ -7,6 +7,7 @@ import { Poblaciones, RestriccionesCodigoPostal, DatosRestricciones} from '../da
 import { Alert } from 'antd';
 import BotonEliminar from '../ui/BotonEliminar'
 import FormRestricciones from '../ui/FormRestricciones';
+import Select from 'react-select';
 
 
 
@@ -14,34 +15,36 @@ import FormRestricciones from '../ui/FormRestricciones';
 //Función principal donde almacenaremos todas las funciones y los componentes
 const RestriCovid = () => {
   //Hooks useState
-  const [codigoPostal, guardarCodigoPostal] = useState({value:"20100",id:1});
+  const [poblacion, guardarPoblacion] = useState({});
+  const [poblacionesSelect, guardarPoblacionesSelect] = useState([]);
   const [boolCodigoValidado, guardarCodigoValidado] = useState(null);
   const [arRestricciones, guardarArRestricciones] = useState([]);
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
   const [arPoblaciones, guardarArPoblaciones] = useState([]);
   const [arDatosSelect, guardarArSelect] = useState([]);
+  const [boolRecargarRestricciones, guardarRecargarRestricciones] = useState(false)
   
   /**
    * Esta función valida el código postal asegurandose de que hay
    * 5 numeros del 0-9 y que no haya ningún otro caracter
    * 
-   * @param {str} codigoPostal 
+   * @param {str} poblacion 
    * @returns false || true
    */
-  const ValidarCodigoPostal = codigoPostal => {
-    return /[0-9]{5}/.test(codigoPostal) && /[^0-9]/.test(codigoPostal) === false ?  true : false
+  const Validarpoblacion = poblacion => {
+    return /[0-9]{5}/.test(poblacion) && /[^0-9]/.test(poblacion) === false ?  true : false
   }
 
   
 
   //Está función cargará los datos haciendo una petición a la API y llama al validador de código postal
-  const MostrarRestricciones = async codigoPostal => {
-    if(ValidarCodigoPostal(codigoPostal) === false){
+  const MostrarRestricciones = async poblacion => {
+    if(Validarpoblacion(poblacion) === false){
       guardarCodigoValidado(false);
     }else{
-      if(await (await RestriccionesCodigoPostal(codigoPostal)).length !== 0){
+      if(await (await RestriccionesCodigoPostal(poblacion)).length !== 0){
         guardarCodigoValidado(true);
-        guardarArRestricciones(await RestriccionesCodigoPostal(codigoPostal));
+        guardarArRestricciones(await RestriccionesCodigoPostal(poblacion));
       }else{
         guardarCodigoValidado(undefined);
       }
@@ -49,6 +52,10 @@ const RestriCovid = () => {
     }
   }
   
+  const funcionRecargar = () => {
+    guardarRecargarRestricciones(!boolRecargarRestricciones);
+  }
+
 
   const PrepararRestriccionesSelect = async () =>{
     let datosRestricciones = await DatosRestricciones();
@@ -74,17 +81,33 @@ const RestriCovid = () => {
   }
 
 
+  const PrepararPoblacionesSelect = () => {
+    let datosPoblacionesSelect = [];
+    arPoblaciones.forEach(poblacion => {
+        datosPoblacionesSelect.push({label : "" + poblacion.poblacion  + " (" + poblacion.cp + ")", value: {id:poblacion.id, codigo: poblacion.cp}});
+    }); 
+    return datosPoblacionesSelect;
+  }
+
+
+
+
   /**
    * Este useEffect llama a la funcion que carga las poblaciones
    * una vez se inicia la página para poder generar los marcadores del mapa
    */
   useEffect(() => {
-    MostrarRestricciones("20100");
+    if(poblacion.value !== undefined)
+      MostrarRestricciones(poblacion.value.codigo);
+  },[boolRecargarRestricciones]);
+
+
+
+  useEffect(() => {
+    CargarPoblaciones();
     PrepararRestriccionesSelect();
-    if(arPoblaciones.length === 0){
-      CargarPoblaciones();
-    }
-  },);
+    PrepararPoblacionesSelect();
+  },[]);
 
   /**
    * Este useEffect activa la generación de tabla de restricciones
@@ -111,6 +134,21 @@ const RestriCovid = () => {
     );
   }
 
+  function SelectPoblacion(props){
+    let datosSelectPoblacion = PrepararPoblacionesSelect();
+
+    return (
+      <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+        <Select
+        defaultValue={poblacion}
+        onChange={(e) => {guardarPoblacion(e);funcionRecargar();console.log("e => ",e)}}
+        options={datosSelectPoblacion}
+      />
+      </div>
+    )
+  }
+
+
   /**
    * Este componente recorrerá los datos de
    * las restricciones proporcionados por la API
@@ -122,10 +160,10 @@ const RestriCovid = () => {
       <>
         <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
           <ul className={'list-group'}>
-              {props.datosRestricciones.map( restriccion => {
+              {props.datosRestricciones.map( (restriccion,i) => {
                 return(
                   <>
-                    <li className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion} `} <BotonEliminar datosRestriccion={restriccion} texto={'Eliminar restricción'}></BotonEliminar></li>
+                    <li key={`liRestriccion${i}`} className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion} `} <BotonEliminar key={`BotonEliminarRestriccion${i}`} funcionRecargar={funcionRecargar} datosRestriccion={restriccion} datosPoblacion={poblacion} texto={'Eliminar restricción'}></BotonEliminar></li>
                   </>
                 )
               } )}
@@ -141,7 +179,9 @@ const RestriCovid = () => {
       <Logo></Logo>
     </div>       
 
-      {boolMostrarRestricciones === true && boolCodigoValidado === true ? (
+    <SelectPoblacion/>
+
+      {boolMostrarRestricciones === true ? (
         <>
           <div className={`mt-8 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
@@ -150,13 +190,7 @@ const RestriCovid = () => {
             <Restricciones datosRestricciones={arRestricciones}></Restricciones>
           </div>
         </>
-      ) : boolCodigoValidado === false ? (
-        <>
-          <div className={`mt-2mt-2 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
-            <Alert type="error" message="Por favor, introduce el formato de codigo postal correcto ('12345' por ejemplo)" />
-          </div>
-        </>
-      ) : boolCodigoValidado === undefined ? (
+      )  : boolCodigoValidado === undefined ? (
         <>
           <div className={`mt-2 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="error" message="Lo siento, ha ocurrido un error al intentar obtener los datos, por favor, asegurese de que está
@@ -165,7 +199,7 @@ const RestriCovid = () => {
         </>
       ) : null}
       <div>
-        <FormRestricciones datos={arDatosSelect} poblacion={codigoPostal}></FormRestricciones>
+        <FormRestricciones funcionRecargar={funcionRecargar} datos={arDatosSelect} poblacion={poblacion}></FormRestricciones>
       </div>
     </>
     

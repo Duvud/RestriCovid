@@ -1,10 +1,14 @@
-import EliminarRestriccion from '../data/APIController';
+import {EliminarRestriccionPoblacion} from '../data/APIController';
 
 //Este componente se usa en cada panel de restricción para eliminar la propia restricción
 export const BotonElimnar = (props) => {
-    const restriccion = props.datosRestriccion;
     return (
-        <button onClick={() => EliminarRestriccion(restriccion.id)}>{props.texto}</button>
+        <button onClick={() => {
+            if(props.datosPoblacion !== undefined){
+                EliminarRestriccionPoblacion(props.datosRestriccion.id,props.datosPoblacion.value.id);
+                props.funcionRecargar()
+            }
+        }}>{props.texto}</button>
     )
 }
 

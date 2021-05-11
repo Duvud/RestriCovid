@@ -1,7 +1,7 @@
 import {useState, React} from 'react';
 import Select from 'react-select';
 import styles from '../css/RestriCovid.module.css';
-import AsignarRestriccion from '../data/APIController'
+import {AsignarRestriccion} from '../data/APIController.js'
 
 
 export const FormRestricciones =  (props) => {
@@ -12,7 +12,7 @@ export const FormRestricciones =  (props) => {
         props.datos.forEach( restriccion => {
             arAux.push(
                 {
-                    label:`${restriccion.id} : ${restriccion.abreviacion}`,
+                    label:`${restriccion.abreviacion}`,
                     value:restriccion.id
                 }
             );
@@ -21,7 +21,13 @@ export const FormRestricciones =  (props) => {
     }
 
     const asignarRestricciones = (poblacion,restricciones) => {
-            console.log(poblacion,restricciones);         
+            if(restricciones.length !== 0 && poblacion !== undefined){
+                restricciones.forEach( 
+                    restriccion => {
+                        AsignarRestriccion(poblacion.value.id,restriccion.value)
+                    }
+                )
+            }         
     }
 
     let datosAdaptados = adaptarDatos();
@@ -37,7 +43,7 @@ export const FormRestricciones =  (props) => {
                 className={'m-auto col-4'}
                 placeholder={'Elige las restricciones que quieras asignar'}
             />
-            <button onClick={() => asignarRestricciones(arAsignarRestriccion,props.poblacion.id)} className={`${styles.btnAsignarRestriccion}`}>Asignar restriccion</button> 
+            <button onClick={() => {asignarRestricciones(props.poblacion.id,arAsignarRestriccion); props.funcionRecargar()}} className={`${styles.btnAsignarRestriccion}`}>Asignar restriccion</button> 
         </div>       
         </>
     )

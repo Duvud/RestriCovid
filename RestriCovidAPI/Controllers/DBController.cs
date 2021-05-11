@@ -29,6 +29,19 @@ namespace RestriCovidAPI.Controllers
         {
             return Ok("La API funciona correctamente.");
         }
+        [HttpGet("restriccionesPoblaciones")]
+        public ActionResult GetRestriccionesPoblaciones()
+        {
+            try
+            {
+                return Ok(DBServices.Instance.GetRestriccionesPoblaciones());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
         [HttpGet("restricciones")]
         public ActionResult GetRestricciones()
         {
@@ -41,6 +54,8 @@ namespace RestriCovidAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        
+        
 
         [HttpGet("restricciones/{cp}")]
         public ActionResult GetRestriccionesCP(int cp)
@@ -123,13 +138,12 @@ namespace RestriCovidAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("deleteRestriccionPoblacion/")]
         public ActionResult DeleteRestriccionPoblacion(int idRestriccion, int idPoblacion)
         {
             try
             {
                 return Ok(DBServices.Instance.DeleteRestriccionPoblacion(idRestriccion, idPoblacion));
-
             }
             catch (Exception ex)
             {

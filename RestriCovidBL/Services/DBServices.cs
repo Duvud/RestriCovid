@@ -22,18 +22,31 @@ namespace RestriCovidBL.Services
             }
         }
 
-        public List<RestriccionDTO> GetRestricciones()
+        public List<RestriccionDTO> GetRestriccionesPoblaciones()
         {
             using var dbContext = new RestriCovidDBContext();
 
             return dbContext.RestriccionPoblaciones.Select(dbResul => new RestriccionDTO
             {
-                Id = dbResul.ID,
+                Id = dbResul.RESTRICCION.ID,
                 Cp = dbResul.POBLACION.CP,
                 Codigo = dbResul.RESTRICCION.CODIGO,
                 Poblacion = dbResul.POBLACION.POBLACION,
                 Abreviacion = dbResul.RESTRICCION.ABREVIACION,
                 Descripcion = dbResul.RESTRICCION.DESCRIPCION
+            }).ToList();
+        }
+        
+        public List<RestriccionDTO> GetRestricciones()
+        {
+            using var dbContext = new RestriCovidDBContext();
+
+            return dbContext.Restricciones.Select(dbResul => new RestriccionDTO
+            {
+                Id = dbResul.ID,
+                Codigo = dbResul.CODIGO,
+                Abreviacion = dbResul.ABREVIACION,
+                Descripcion = dbResul.DESCRIPCION
             }).ToList();
         }
 
@@ -43,7 +56,7 @@ namespace RestriCovidBL.Services
 
             return dbContext.RestriccionPoblaciones.Where(dbResul => dbResul.POBLACION.CP == cp).Select(dbResul => new RestriccionDTO
             {
-                Id = dbResul.ID,
+                Id = dbResul.RESTRICCION.ID,
                 Cp = dbResul.POBLACION.CP,
                 Poblacion = dbResul.POBLACION.POBLACION,
                 Abreviacion = dbResul.RESTRICCION.ABREVIACION,
@@ -149,16 +162,22 @@ namespace RestriCovidBL.Services
         {
             using var dbContext = new RestriCovidDBContext();
 
-            var poblacion = dbContext.Poblaciones.Where(poblacion => poblacion.ID == idPoblacion).FirstOrDefault();
-            var restriccion = dbContext.Restricciones.Where(restriccion => restriccion.ID == idRestriccion).FirstOrDefault();
+            if (dbContext.RestriccionPoblaciones.Where(x => x.POBLACION.ID == idPoblacion && x.RESTRICCION.ID == idRestriccion).FirstOrDefault() == null)
+            {
+                var poblacion = dbContext.Poblaciones.Where(poblacion => poblacion.ID == idPoblacion).FirstOrDefault();
+                var restriccion = dbContext.Restricciones.Where(restriccion => restriccion.ID == idRestriccion).FirstOrDefault();
 
-            RestriccionPoblacion rp = new RestriccionPoblacion();
-            rp.POBLACION = poblacion;
-            rp.RESTRICCION = restriccion;
+                RestriccionPoblacion rp = new RestriccionPoblacion();
+                rp.POBLACION = poblacion;
+                rp.RESTRICCION = restriccion;
 
-            dbContext.RestriccionPoblaciones.Add(rp);
-            dbContext.SaveChanges();
-            return true;
+                dbContext.RestriccionPoblaciones.Add(rp);
+                dbContext.SaveChanges();
+                return true;
+            }
+            return false;
+
+
         }
 
         public Boolean DeleteRestriccionPoblacion(int idRestriccion, int idPoblacion)
@@ -172,10 +191,7 @@ namespace RestriCovidBL.Services
                 dbContext.SaveChanges();
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
 
         }
 
