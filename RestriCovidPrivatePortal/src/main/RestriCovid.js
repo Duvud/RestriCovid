@@ -24,31 +24,15 @@ const RestriCovid = () => {
   const [arDatosSelect, guardarArSelect] = useState([]);
   const [boolRecargarRestricciones, guardarRecargarRestricciones] = useState(false)
   
-  /**
-   * Esta función valida el código postal asegurandose de que hay
-   * 5 numeros del 0-9 y que no haya ningún otro caracter
-   * 
-   * @param {str} poblacion 
-   * @returns false || true
-   */
-  const Validarpoblacion = poblacion => {
-    return /[0-9]{5}/.test(poblacion) && /[^0-9]/.test(poblacion) === false ?  true : false
-  }
-
   
-
   //Está función cargará los datos haciendo una petición a la API y llama al validador de código postal
   const MostrarRestricciones = async poblacion => {
-    if(Validarpoblacion(poblacion) === false){
-      guardarCodigoValidado(false);
+    let datosRestricciones = await RestriccionesCodigoPostal(poblacion);
+    guardarArRestricciones(await RestriccionesCodigoPostal(poblacion));
+    if(datosRestricciones.length === 0){
+        guardarBoolMostrarRestricciones(false);
     }else{
-      if(await (await RestriccionesCodigoPostal(poblacion)).length !== 0){
-        guardarCodigoValidado(true);
-        guardarArRestricciones(await RestriccionesCodigoPostal(poblacion));
-      }else{
-        guardarCodigoValidado(undefined);
-      }
-      
+        guardarBoolMostrarRestricciones(true);
     }
   }
   
@@ -99,7 +83,7 @@ const RestriCovid = () => {
   useEffect(() => {
     if(poblacion.value !== undefined)
       MostrarRestricciones(poblacion.value.codigo);
-  },[boolRecargarRestricciones]);
+  },[boolRecargarRestricciones,poblacion,arDatosSelect,boolMostrarRestricciones]);
 
 
 
@@ -138,11 +122,12 @@ const RestriCovid = () => {
     let datosSelectPoblacion = PrepararPoblacionesSelect();
 
     return (
-      <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+      <div className={`m-auto text-center col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12`}>
         <Select
         defaultValue={poblacion}
         onChange={(e) => {guardarPoblacion(e);funcionRecargar();console.log("e => ",e)}}
         options={datosSelectPoblacion}
+        placeholder={'Elige las restricciones que quieras asignar'}
       />
       </div>
     )
@@ -158,7 +143,7 @@ const RestriCovid = () => {
   function Restricciones(props) {
     return (
       <>
-        <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+        <div className={`m-auto text-center col-xl-4 col-lg-5 col-md-6 col-sm-7 col-11`}>
           <ul className={'list-group'}>
               {props.datosRestricciones.map( (restriccion,i) => {
                 return(
@@ -179,9 +164,12 @@ const RestriCovid = () => {
       <Logo></Logo>
     </div>       
 
-    <SelectPoblacion/>
+    <div className={'mb-3'}>
+      <SelectPoblacion/>
+    </div>
+    
 
-      {boolMostrarRestricciones === true ? (
+      {boolMostrarRestricciones === true   ? (
         <>
           <div className={`mt-8 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
@@ -190,15 +178,14 @@ const RestriCovid = () => {
             <Restricciones datosRestricciones={arRestricciones}></Restricciones>
           </div>
         </>
-      )  : boolCodigoValidado === undefined ? (
+      )  : boolMostrarRestricciones === false && poblacion.label !== undefined ? (
         <>
-          <div className={`mt-2 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
-            <Alert type="error" message="Lo siento, ha ocurrido un error al intentar obtener los datos, por favor, asegurese de que está
-            introduciendo un código postal de la región del País Vasco" />
+          <div className={`mt-8  m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+            <Alert type="error" message={`No hay restricciones en ${poblacion.label}`} />
           </div>
         </>
       ) : null}
-      <div>
+      <div className={`mt-4`}>
         <FormRestricciones funcionRecargar={funcionRecargar} datos={arDatosSelect} poblacion={poblacion}></FormRestricciones>
       </div>
     </>
