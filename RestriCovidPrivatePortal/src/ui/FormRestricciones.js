@@ -24,7 +24,7 @@ export const FormRestricciones =  (props) => {
             if(restricciones.length !== 0 && poblacion !== undefined){
                 restricciones.forEach( 
                     restriccion => {
-                        AsignarRestriccion(poblacion.value.id,restriccion.value)
+                        AsignarRestriccion(poblacion,restriccion.value)
                     }
                 )
             }         
@@ -43,7 +43,7 @@ export const FormRestricciones =  (props) => {
                 className={'m-auto col-4'}
                 placeholder={'Elige las restricciones que quieras asignar'}
             />
-            <button onClick={() => {asignarRestricciones(props.poblacion.id,arAsignarRestriccion); props.funcionRecargar()}} className={`${styles.btnAsignarRestriccion}`}>Asignar restriccion</button> 
+            <button onClick={() => {asignarRestricciones(props.poblacion.value.id,arAsignarRestriccion); props.funcionRecargar()}} className={`${styles.btnAsignarRestriccion} btn btn-info`}>Asignar restriccion</button> 
         </div>       
         </>
     )
