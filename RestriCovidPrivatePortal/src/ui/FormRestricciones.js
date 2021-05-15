@@ -34,13 +34,13 @@ export const FormRestricciones =  (props) => {
 
     return (
         <>
-        <div className={'col-12 text-center'}>
+        <div className={'m-auto text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-11'}>
             <Select 
                 isMulti
                 options={datosAdaptados}
                 defaultValue={arAsignarRestriccion}
                 onChange={(e) => guardarAsignarRestriccion(e)}
-                className={'m-auto col-4'}
+                className={'m-auto text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-11'}
                 placeholder={'Elige las restricciones que quieras asignar'}
             />
             <button onClick={() => {asignarRestricciones(props.poblacion.value.id,arAsignarRestriccion); props.funcionRecargar()}} className={`${styles.btnAsignarRestriccion} btn btn-info`}>Asignar restriccion</button> 

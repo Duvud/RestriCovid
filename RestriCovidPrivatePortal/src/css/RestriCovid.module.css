@@ -11,6 +11,7 @@ input{
     width: 20vw;
     height: 20vh;
     text-align: center;
+    display:block;
 }
 .dImagen img{
     width: 100%;
@@ -18,8 +19,11 @@ input{
 }
 
 .dSubtitulo{
-    margin: 0em auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1vh;
     text-align: center;
+    display:block;
 }
 
 .dPostal{
@@ -27,6 +31,14 @@ input{
     margin-top: 10vh;
 }
 
+
+.restriccion{
+  background-color:rgb(50, 116, 111) !important; 
+  color:rgb(111, 255, 243) !important;
+}
+
 .btnAsignarRestriccion{
     margin-top:5vh;
+    margin-bottom:5vh;
 }
+
