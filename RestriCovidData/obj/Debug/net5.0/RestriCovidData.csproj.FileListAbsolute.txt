@@ -34,3 +34,15 @@ C:\Users\Duvud\Dev\PersonalProyects\RestriCovid\RestriCovidData\obj\Debug\net5.0
 C:\Users\Duvud\Dev\PersonalProyects\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.dll
 C:\Users\Duvud\Dev\PersonalProyects\RestriCovid\RestriCovidData\obj\Debug\net5.0\ref\RestriCovidData.dll
 C:\Users\Duvud\Dev\PersonalProyects\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.pdb
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\bin\Debug\net5.0\RestriCovidData.deps.json
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\bin\Debug\net5.0\RestriCovidData.dll
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\bin\Debug\net5.0\ref\RestriCovidData.dll
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\bin\Debug\net5.0\RestriCovidData.pdb
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.csprojAssemblyReference.cache
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.AssemblyInfoInputs.cache
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.AssemblyInfo.cs
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.csproj.CoreCompileInputs.cache
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.dll
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\ref\RestriCovidData.dll
+C:\Users\restriuser\Workspace\RestriCovid\RestriCovidData\obj\Debug\net5.0\RestriCovidData.pdb

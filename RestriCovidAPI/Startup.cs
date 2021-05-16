@@ -35,24 +35,8 @@ namespace RestriCovidAPI
                 options.JsonSerializerOptions.IgnoreNullValues = true;
                 options.JsonSerializerOptions.WriteIndented = true;
             });
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x=> {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    IssuerSigningKey = new SymmetricSecurityKey(ASCIIEncoding.ASCII.GetBytes(key)),
-                    ValidateAudience = false,
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = false
-                };
-            });
-            services.AddAuthorization();
-            //SINGLETON AQUI
-            //services.AddDbContext<RestriCovidDBContext>(context => context.UseInMemoryDatabase("restricovid"), ServiceLifetime.Singleton);
+            
+
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()

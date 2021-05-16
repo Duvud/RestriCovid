@@ -2383,10 +2383,7 @@
         },
         "runtime": {
           "bin/placeholder/RestriCovidBL.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "RestriCovidData/1.0.0": {
         "type": "project",
@@ -8110,35 +8107,42 @@
     ]
   },
   "packageFolders": {
-    "/home/duvud/.nuget/packages/": {}
+    "C:\\Users\\restriuser\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/duvud/Dev/RestriCovid/RestriCovidAPI/RestriCovidAPI.csproj",
+      "projectUniqueName": "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidAPI\\RestriCovidAPI.csproj",
       "projectName": "RestriCovidAPI",
-      "projectPath": "/home/duvud/Dev/RestriCovid/RestriCovidAPI/RestriCovidAPI.csproj",
-      "packagesPath": "/home/duvud/.nuget/packages/",
-      "outputPath": "/home/duvud/Dev/RestriCovid/RestriCovidAPI/obj/",
+      "projectPath": "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidAPI\\RestriCovidAPI.csproj",
+      "packagesPath": "C:\\Users\\restriuser\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/duvud/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\restriuser\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/home/duvud/Dev/RestriCovid/RestriCovidBL/RestriCovidBL.csproj": {
-              "projectPath": "/home/duvud/Dev/RestriCovid/RestriCovidBL/RestriCovidBL.csproj"
+            "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidBL\\RestriCovidBL.csproj": {
+              "projectPath": "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidBL\\RestriCovidBL.csproj"
             },
-            "/home/duvud/Dev/RestriCovid/RestriCovidData/RestriCovidData.csproj": {
-              "projectPath": "/home/duvud/Dev/RestriCovid/RestriCovidData/RestriCovidData.csproj"
+            "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj": {
+              "projectPath": "C:\\Users\\restriuser\\Workspace\\RestriCovid\\RestriCovidData\\RestriCovidData.csproj"
             }
           }
         }
@@ -8196,7 +8200,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   },

@@ -1,8 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/home/duvud/.dotnet/store/|arch|/|tfm|",
-      "/home/duvud/.nuget/packages"
+      "C:\\Users\\restriuser\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\restriuser\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ]
   }
 }
