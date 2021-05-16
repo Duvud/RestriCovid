@@ -98,12 +98,12 @@ const RestriCovid = () => {
   function Restricciones(props) {
     return (
       <>
-        <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+        <div className={`m-auto col-10 text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-12`}>
           <ul className={'list-group'}>
               {props.datos.map( restriccion => {
                 return(
                   <>
-                    <li className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion}`}</li>
+                    <li className={'col-12 list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion}`}</li>
                   </>
                 )
               } )}

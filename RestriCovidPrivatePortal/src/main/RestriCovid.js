@@ -111,8 +111,8 @@ const RestriCovid = () => {
       <div className={`${styles.dImagen} col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8`}>
         <img src={logo} alt="Logo RestriCovid" />  
       </div>
-      <div className={`${styles.dSubtitulo} col-xl-3 col-lg-4 col-md-5 col-sm-6 col-8`}>
-        <h3>Portal privado</h3>
+      <div className={`${styles.dSubtitulo}  col-xl-3 col-lg-4 col-md-5 col-sm-6 col-6`}>
+        <h3 >Portal privado</h3>
       </div>
       </>
     );
@@ -122,12 +122,12 @@ const RestriCovid = () => {
     let datosSelectPoblacion = PrepararPoblacionesSelect();
 
     return (
-      <div className={`m-auto text-center col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12`}>
+      <div className={`mb-8 m-auto text-center col-xl-5 col-lg-6 col-md-7 col-sm-8 col-11`}>
         <Select
         defaultValue={poblacion}
         onChange={(e) => {guardarPoblacion(e);funcionRecargar();console.log("e => ",e)}}
         options={datosSelectPoblacion}
-        placeholder={'Elige las restricciones que quieras asignar'}
+        placeHolder={'Elige las restricciones que quieras asignar'}
       />
       </div>
     )
@@ -143,12 +143,12 @@ const RestriCovid = () => {
   function Restricciones(props) {
     return (
       <>
-        <div className={`m-auto text-center col-xl-4 col-lg-5 col-md-6 col-sm-7 col-11`}>
+        <div className={`m-auto text-center col-xl-6 col-lg-7 col-md-8 col-sm-9 col-11`}>
           <ul className={'list-group'}>
               {props.datosRestricciones.map( (restriccion,i) => {
                 return(
                   <>
-                    <li key={`liRestriccion${i}`} className={'list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion} `} <BotonEliminar key={`BotonEliminarRestriccion${i}`} funcionRecargar={funcionRecargar} datosRestriccion={restriccion} datosPoblacion={poblacion} texto={'Eliminar restricción'}></BotonEliminar></li>
+                    <li key={`liRestriccion${i}`} className={'restriccion list-group-item list-group-item-action list-group-item-primary col-12  mt-2'}>{`${restriccion.abreviacion}    `} <BotonEliminar key={`BotonEliminarRestriccion${i}`} funcionRecargar={funcionRecargar} datosRestriccion={restriccion} datosPoblacion={poblacion} texto={'Eliminar restricción'}></BotonEliminar></li>
                   </>
                 )
               } )}
@@ -168,10 +168,9 @@ const RestriCovid = () => {
       <SelectPoblacion/>
     </div>
     
-
-      {boolMostrarRestricciones === true   ? (
+    {boolMostrarRestricciones === true   ? (
         <>
-          <div className={`mt-8 m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+          <div className={`mt-8 m-auto text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-11`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
           <div className={`mb-5 mt-3`}>
@@ -180,7 +179,7 @@ const RestriCovid = () => {
         </>
       )  : boolMostrarRestricciones === false && poblacion.label !== undefined ? (
         <>
-          <div className={`mt-8  m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
+          <div className={`mt-8 m-auto text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-11`}>
             <Alert type="error" message={`No hay restricciones en ${poblacion.label}`} />
           </div>
         </>
@@ -194,5 +193,4 @@ const RestriCovid = () => {
 
   );
 }
-
 export default RestriCovid;
