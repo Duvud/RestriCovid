@@ -94,20 +94,16 @@ const RestriCovid = () => {
    * la ventana
    */
   function Restricciones(props) {
-    return (
-      <>
+    return (     
         <div className={`${styles.dRestricciones}  text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-12`}>
-          <ul className={'list-group'}>
-              {props.datos.map( restriccion => {
+          <ul  className={'list-group'}>
+              {props.datos.map( (restriccion) => {
                 return(
-                  <>
-                    <li className={'col-12 list-group-item list-group-item-action list-group-item-info mt-1 mb-3'}>{`${restriccion.abreviacion}`}</li>
-                  </>
+                    <li key={"liRestriccion :"+restriccion.id } className={'col-12 list-group-item list-group-item-action list-group-item-info mt-1 mb-3'}>{`${restriccion.abreviacion}`}</li>
                 )
               } )}
           </ul>
         </div>
-      </>
     );
   }
 
@@ -151,7 +147,7 @@ const RestriCovid = () => {
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
-          <div className={` ${styles.dRestricciones} `}>
+          <div key={"dPrincipalRestricciones"} className={` ${styles.dRestricciones} `}>
             <Restricciones datos={arRestricciones}></Restricciones>
           </div>
         </>

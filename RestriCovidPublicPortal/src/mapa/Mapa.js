@@ -38,14 +38,12 @@ const Marcadores = (props) => {
     <>
       {props.datos !== undefined && props.datos.length !== 0 ? (
       props.datos.map ((marcador,i) => {
-          return (
-              <>
-                <Marker key={marcador.cp} eventHandlers={ { click : () => props.funcion(marcador.cp) } } position={[marcador.posX,marcador.posY]}>
-                    <Popup>
+          return (              
+                <Marker key={"Marcador:" + marcador.cp} eventHandlers={ { click : () => props.funcion(marcador.cp) } } position={[marcador.posX,marcador.posY]}>
+                    <Popup key={"Popup: " + marcador.cp}>
                     {`Nombre : ${marcador.poblacion} | Código : ${marcador.cp}`}
                     </Popup>
                 </Marker>
-              </>
           );
       })
     ) : null}
