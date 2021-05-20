@@ -2,7 +2,7 @@
 //Este metodo devuelve todas las restricciones de la api en un array de objetos
 export const Restricciones = async () => {
     //Url para conseguir datos y hook dónde guardaremos los datos
-    const url = 'https://localhost:5001/RestriCovid/restriccionesPoblaciones';
+    const url = 'http://40.114.216.184:5001/RestriCovid/restriccionesPoblaciones';
     let datos = [];
 
     await fetch(url).then(response => response.json()).then(data => datos = data);
@@ -11,7 +11,7 @@ export const Restricciones = async () => {
 
 //Este metodo devuelve todas las restricciones de la poblacion que le pases por parametro en forma de código postal
 export const RestriccionesCodigoPostal = async (codigoPostal) => {
-    const url = `https://localhost:5001/RestriCovid/restricciones/${codigoPostal}`;
+    const url = `http://40.114.216.184:5001/RestriCovid/restricciones/${codigoPostal}`;
     let datosCodigoPostal = [];
 
     await fetch(url).then(response => response.json()).then(data => datosCodigoPostal = data);
@@ -21,7 +21,7 @@ export const RestriccionesCodigoPostal = async (codigoPostal) => {
 
 //Este metodo te devuelve todos los datos de las distintas poblaciones haciendo una llamada a la api
 export const Poblaciones = async () => {
-    const url = 'https://localhost:5001/RestriCovid/poblaciones';
+    const url = 'http://40.114.216.184:5001/RestriCovid/poblaciones';
     let datosPoblaciones = [];
 
     await fetch(url).then(response => response.json()).then(data => datosPoblaciones = data);
