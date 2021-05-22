@@ -27,7 +27,7 @@ export const FormRestricciones =  (props) => {
                         AsignarRestriccion(poblacion,restriccion.value)
                     }
                 )
-                props.funcionRecargar();
+                setTimeout(() => {props.funcionRecargar();},100);
             }         
     }
 

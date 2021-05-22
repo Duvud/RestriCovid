@@ -20,7 +20,7 @@ const RestriCovid = () => {
   const [boolMostrarRestricciones, guardarBoolMostrarRestricciones] = useState(false);
   const [arPoblaciones, guardarArPoblaciones] = useState([]);
   const [arDatosSelect, guardarArSelect] = useState([]);
-  const [boolRecargarRestricciones, guardarRecargarRestricciones] = useState(false)
+  const [boolRecargarRestricciones, guardarRecargarRestricciones] = useState(false);
   
   
   //Está función cargará los datos haciendo una petición a la API y llama al validador de código postal
