@@ -41,8 +41,10 @@ CREATE TABLE `poblaciones` (
 --
 
 INSERT INTO `poblaciones` (`ID`, `Poblacion`, `CP`, `Provincia`, `PosX`, `PosY`) VALUES
-(1, 'Lezo', 20100, 'Guipuzcoa', 43.3221, 1.90283),
-(3, 'Irun', 20301, 'Guipuzcoa', 43.334, 1.82672);
+(1, 'Lezo', 20100, 'Guipuzcoa', 43.3263415, -1.8857695),
+(2, 'Irun', 20301, 'Guipuzcoa', 43.3186405, -1.7737258),
+(3, 'San Sebastian', 20001 , 'Guipuzcoa', 43.31283, -1.97499),
+(4, 'Renteria', 20101, 'Guipuzcoa', 43.3166700, -2.4333300);
 
 -- --------------------------------------------------------
 
@@ -54,7 +56,7 @@ CREATE TABLE `restricciones` (
   `ID` int(5) NOT NULL,
   `Codigo` varchar(20) NOT NULL,
   `Descripcion` varchar(300) NOT NULL,
-  `Abreviacion` varchar(50) NOT NULL
+  `Abreviacion` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -62,13 +64,14 @@ CREATE TABLE `restricciones` (
 --
 
 INSERT INTO `restricciones` (`ID`, `Codigo`, `Descripcion`, `Abreviacion`) VALUES
-(1, '001', 'Restriccion1', 'Es la primera restriccion'),
-(2, 'Res2', 'Restriccion2', 'Es la segunda descripcion, esto es solo una prueba'),
-(3, 'Res3', 'Restriccion3', 'Es la tercera restriccion, esto es tan solo una pr'),
-(4, 'Res4', 'Restriccion4', 'Es la cuarta restriccion, solo para probar cosas');
+(1, 'Res1', 'Restriccion1', 'Cierre petimetral'),
+(2, 'Res2', 'Restriccion2', 'Hostelería Cerrada'),
+(3, 'Res3', 'Restriccion3', 'Toque de queda desde las 22:00 hasta las 06:00'),
+(4, 'Res4', 'Restriccion4', 'Se permiten grupos de 5 personas máximo en zonas públicas'),
+(5, 'Res5', 'Restriccion5', 'No esta permitido fumar en zonas públicas'),
+(6, 'Res6', 'Restriccion6', 'Confinamiento total, no se puede salir del domicilio de no ser estríctamente necesario');
 
 -- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `restriccionpoblacion`
 --
@@ -97,8 +100,7 @@ INSERT INTO `restriccionpoblacion` (`ID`, `Restriccion`, `Poblacion`) VALUES
 -- Indices de la tabla `poblaciones`
 --
 ALTER TABLE `poblaciones`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `CP` (`CP`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `restricciones`

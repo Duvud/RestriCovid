@@ -8,10 +8,9 @@ export const BotonElimnar = (props) => {
         onClick={() => {
             if(props.datosPoblacion !== undefined){
                 EliminarRestriccionPoblacion(props.datosRestriccion.id,props.datosPoblacion.value.id);
-                props.funcionRecargar()
+                setTimeout(() => {props.funcionRecargar();},100);
             }
         }}>{props.texto}</button>
     )
 }
-
 export default BotonElimnar;

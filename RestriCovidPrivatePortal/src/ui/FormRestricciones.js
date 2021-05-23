@@ -27,6 +27,7 @@ export const FormRestricciones =  (props) => {
                         AsignarRestriccion(poblacion,restriccion.value)
                     }
                 )
+                setTimeout(() => {props.funcionRecargar();},100);
             }         
     }
 
@@ -34,17 +35,15 @@ export const FormRestricciones =  (props) => {
 
     return (
         <>
-        <div className={'m-auto text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-11'}>
             <Select 
                 isMulti
                 options={datosAdaptados}
                 defaultValue={arAsignarRestriccion}
                 onChange={(e) => guardarAsignarRestriccion(e)}
-                className={'m-auto text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-11'}
+                className={'m-auto col-xl-5 col-lg-6 col-md-7 col-sm-8 col-11'}
                 placeholder={'Elige las restricciones que quieras asignar'}
             />
-            <button onClick={() => {asignarRestricciones(props.poblacion.value.id,arAsignarRestriccion); props.funcionRecargar()}} className={`${styles.btnAsignarRestriccion} btn btn-info`}>Asignar restriccion</button> 
-        </div>       
+            <button onClick={() => props.poblacion.value !== undefined ? asignarRestricciones(props.poblacion.value.id,arAsignarRestriccion):null} className={`${styles.btnAsignarRestriccion} btn btn-info`}>Asignar restriccion</button> 
         </>
     )
 }

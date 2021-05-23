@@ -9,24 +9,22 @@ export const Restricciones = async () => {
     return datos;
 }
 
-
+//Este metodo devuelve todas las restricciones de la poblacion que le pases por parametro en forma de código postal
 export const RestriccionesCodigoPostal = async (codigoPostal) => {
     const url = `https://localhost:5001/RestriCovid/restricciones/${codigoPostal}`;
     let datosCodigoPostal = [];
 
     await fetch(url).then(response => response.json()).then(data => datosCodigoPostal = data);
-    console.log( "url =>" , url);
-    console.log(datosCodigoPostal);
     return datosCodigoPostal;
 }
 
+
+//Este metodo te devuelve todos los datos de las distintas poblaciones haciendo una llamada a la api
 export const Poblaciones = async () => {
     const url = 'https://localhost:5001/RestriCovid/poblaciones';
     let datosPoblaciones = [];
 
     await fetch(url).then(response => response.json()).then(data => datosPoblaciones = data);
-    console.log( "url =>" , url);
-    console.log(datosPoblaciones);
     return datosPoblaciones;
 }
 

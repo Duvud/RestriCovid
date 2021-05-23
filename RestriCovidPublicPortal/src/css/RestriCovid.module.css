@@ -21,3 +21,10 @@ input{
     text-align: center;
 }
 
+.dRestricciones{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 20vh !important;
+    margin-top: 2vh !important
+}
+

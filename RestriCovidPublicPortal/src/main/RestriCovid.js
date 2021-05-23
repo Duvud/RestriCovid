@@ -37,7 +37,6 @@ const RestriCovid = () => {
       if(await (await RestriccionesCodigoPostal(codigoPostal)).length !== 0){
         guardarCodigoValidado(true);
         guardarArRestricciones(await RestriccionesCodigoPostal(codigoPostal));
-        console.log("objeto restricciones => ", await RestriccionesCodigoPostal(codigoPostal));
       }else{
         guardarCodigoValidado(undefined);
       }
@@ -54,7 +53,6 @@ const RestriCovid = () => {
    */
   const cargarPoblaciones = async () => {
     let datosPoblaciones = await Poblaciones();
-    console.log("Datos poblaciones => ",datosPoblaciones);
     guardarArPoblaciones(datosPoblaciones);
   }
 
@@ -96,20 +94,16 @@ const RestriCovid = () => {
    * la ventana
    */
   function Restricciones(props) {
-    return (
-      <>
-        <div className={`m-auto col-10 text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-12`}>
-          <ul className={'list-group'}>
-              {props.datos.map( restriccion => {
+    return (     
+        <div className={`${styles.dRestricciones}  text-center col-xl-8 col-lg-9 col-md-10 col-sm-11 col-12`}>
+          <ul  className={'list-group'}>
+              {props.datos.map( (restriccion) => {
                 return(
-                  <>
-                    <li className={'col-12 list-group-item list-group-item-action list-group-item-light mt-2'}>{` ${restriccion.id} :  ${restriccion.abreviacion}`}</li>
-                  </>
+                    <li key={"liRestriccion :"+restriccion.id } className={'col-12 list-group-item list-group-item-action list-group-item-info mt-1 mb-3'}>{`${restriccion.abreviacion}`}</li>
                 )
               } )}
           </ul>
         </div>
-      </>
     );
   }
 
@@ -153,7 +147,7 @@ const RestriCovid = () => {
           <div className={`m-auto col-6 text-center col-xl-5 col-lg-6 col-md-7 col-sm-9 col-12`}>
             <Alert type="success" message="Restricciones cargadas correctamente" />
           </div>
-          <div className={` mb-5 mt-3`}>
+          <div key={"dPrincipalRestricciones"} className={` ${styles.dRestricciones} `}>
             <Restricciones datos={arRestricciones}></Restricciones>
           </div>
         </>

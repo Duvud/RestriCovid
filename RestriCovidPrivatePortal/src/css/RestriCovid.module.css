@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(236, 252, 251) !important;
+    background-color: rgb(214, 235, 255) !important;
 }
 
 input{
@@ -7,7 +7,9 @@ input{
 }
 
 .dImagen{
-    margin: 0 auto;
+    margin-bottom:2vh;
+    margin-right: auto;
+    margin-left: auto;
     width: 20vw;
     height: 20vh;
     text-align: center;
@@ -16,12 +18,13 @@ input{
 .dImagen img{
     width: 100%;
     height: auto;
+    z-index: 200000000;
 }
 
 .dSubtitulo{
     margin-right: auto;
     margin-left: auto;
-    margin-top: 1vh;
+    margin-top: 2vh;
     text-align: center;
     display:block;
 }
@@ -38,7 +41,19 @@ input{
 }
 
 .btnAsignarRestriccion{
-    margin-top:5vh;
+    margin-top:2.5vh;
     margin-bottom:5vh;
+}
+
+.dResAlert{
+    margin-top:5vh !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.dFormAsignar{
+    margin-top:5vh !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
