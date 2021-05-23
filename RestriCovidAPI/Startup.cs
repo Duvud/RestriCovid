@@ -29,7 +29,6 @@ namespace RestriCovidAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key = "This is the demo key";
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.IgnoreNullValues = true;
@@ -55,11 +54,9 @@ namespace RestriCovidAPI
 
             app.UseCors("MyPolicy");
 
-            app.UseHttpsRedirection();
 
             app.UseRouting();
             
-            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 

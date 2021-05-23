@@ -22,7 +22,7 @@ export const DatosRestriccionesPoblaciones = async () => {
 
 //Devuelve las restricciones dependiendo del código postal que le pasemos por parámetro
 export const RestriccionesCodigoPostal = async (codigoPostal) => {
-    const url = `https://localhost:5001/RestriCovid/restricciones/${codigoPostal}`;
+    const url = `http://localhost:5001/RestriCovid/restricciones/${codigoPostal}`;
     let datosCodigoPostal = [];
 
     await fetch(url).then(response => response.json()).then(data => datosCodigoPostal = data);
@@ -31,7 +31,7 @@ export const RestriccionesCodigoPostal = async (codigoPostal) => {
 
 /**Devuelve todos los registros de la tabla poblaciones */
 export const Poblaciones = async () => {
-    const url = 'https://localhost:5001/RestriCovid/poblaciones';
+    const url = 'http://localhost:5001/RestriCovid/poblaciones';
     let datosPoblaciones = [];
 
     await fetch(url).then(response => response.json()).then(data => datosPoblaciones = data);
@@ -47,9 +47,10 @@ export const Poblaciones = async () => {
  * ejemplo de url:https://localhost:5001/RestriCovid/deleteRestriccionPoblacion?idRestriccion=1&idPoblacion=1
  */
 export const EliminarRestriccionPoblacion = async (idRestriccion,idPoblacion) => {
-    let url = `https://localhost:5001/RestriCovid/deleteRestriccionPoblacion/?idRestriccion=${idRestriccion}&idPoblacion=${idPoblacion}`;
+    let url = `http://localhost:5001/RestriCovid/deleteRestriccionPoblacion/?idRestriccion=${idRestriccion}&idPoblacion=${idPoblacion}`;
     await fetch(url, {method : 'DELETE'}).then(response => {
-        console.log(response.json());
+        if(response.status !== 200)
+            return response.json(); 
     })
     .catch(error => console.log(error)); 
 }
@@ -61,13 +62,10 @@ export const EliminarRestriccionPoblacion = async (idRestriccion,idPoblacion) =>
  * envía a la api peticion de insert hacia la tabla RestriccionPoblacion 
  */
 export const AsignarRestriccion = async (idPoblacion,idRestriccion) => {
-    let url = `https://localhost:5001/RestriCovid/insertRestriccionPoblacion/?idRestriccion=${idRestriccion}&idPoblacion=${idPoblacion}`;
+    let url = `http://localhost:5001/RestriCovid/insertRestriccionPoblacion/?idRestriccion=${idRestriccion}&idPoblacion=${idPoblacion}`;
     await fetch(url,{method: 'PUT'}).then(response => {
-        if(response.status === 200){
-            return response.json();
-        }else{
-            console.log(response);
-        }  
+        if(response.status !== 200)
+            return response.json();  
     })
     .catch(error => console.log("Error",error)); 
 }
